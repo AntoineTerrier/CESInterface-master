@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ event.title }}{% endblock %}
+
+{% block body %}
+    <h1>{{ event.title }}</h1>
+    <hr class="bg-primary">
+    <p>{{ event.description }}</p>
+    <p>Publié par <strong class="author">{{ event.idAuthor }}</strong> le {{ event.createdAt | date('d/m/y à H:i')}} </p>
+    <p>Date de l'évenement : {{ event.EventDate | date('d/m/y')}}</p>
+
+    <h2 style="margin-bottom:40px;">Photos :</h2>
+    <div class="row">
+        {% for picture in event.pictures %}
+            <a href="{{ path("picture", {'id':picture.id}) }}" class="col-3"><img class="img-fluid" src="{{ picture.picture }}" ></a>
+        {% endfor %}
+    </div>
+{% endblock %}

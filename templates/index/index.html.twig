@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+    <div class="row justify-content-around">
+        <h2>À venir</h2>
+        {% for event in nextEvents %}
+            <div class="card text-center w-100" style="margin:15px 0;">
+                    <div class="card-header">
+                      {{ event.title }}
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">{{ event.description }}</p>
+                        <a href="{{ path("show", {'id':event.id}) }}" class="btn btn-primary">En savoir plus</a>
+                    </div>
+                <div class="card-footer text-muted">
+                    {{ event.createdAt | date('d/m/y')}}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <hr class="bg-primary">
+    <div class="row justify-content-around">
+        <h2>Souvenir</h2>
+        {% for event in previousEvents %}
+            <div class="card text-center w-100" style="margin:15px 0;">
+                    <div class="card-header">
+                      {{ event.title }}
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">{{ event.description }}</p>
+                        <a href="{{ path("show", {'id':event.id}) }}" class="btn btn-primary">En savoir plus</a>
+                    </div>
+                <div class="card-footer text-muted">
+                    {{ event.createdAt | date('d/m/y')}}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

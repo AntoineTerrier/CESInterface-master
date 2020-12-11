@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Photo {{ picture.id }}{% endblock %}
+
+{% block body %}
+
+    <img class="img-fluid" src="{{ picture.picture }}" >
+    <hr class="bg-primary">
+    
+    <h2 style="margin-bottom:40px;">Commentaires :</h2>
+
+    {% for comment in picture.comments %}
+        <div>
+            <p><strong class="author">{{ comment.idUser }}</strong></p>
+            <p>{{ comment.content }}</p>
+            <p>{{ comment.createdAt | date('d/m/y à H:i') }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}

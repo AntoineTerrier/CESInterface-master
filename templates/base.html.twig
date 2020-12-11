@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang='fr'>
+    <head>
+        <meta charset="UTF-8">
+        <link href="https://bootswatch.com/4/litera/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"/>
+        <title>
+            {% block title %}Welcome!
+            {% endblock %}
+        </title>
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+        <header>
+            <nav class="navbar navbar-expand-md navbar-light bg-light">
+                <a class="navbar-brand" href="{{ path('index') }}">
+                    <img src="/resources/img/logo.png" width="55" height="50" alt="logo">
+                    CESInterface
+                </a>
+                <button aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarColor03" data-toggle="collapse" type="button">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarColor03">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path("shop")}}">Boutique</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Panier</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path("contact") }}">Contact</a>
+                        </li>
+                    </ul>
+                    {% if not app.user %}
+                        <a class="btn btn-primary" href="#" role="button">Connexion</a>
+                    {% else %}
+                        <p><strong>{{ app.user.firstName }} {{ app.user.lastName }}</strong></p>
+                    {% endif %}
+                </div>
+            </nav>
+        </header>
+        <main class="container">
+
+            {% block body %}{% endblock %}
+
+        </main>
+        <footer class="container-fluid" id="footer">
+            <nav class="row bg-primary justify-content-between">
+                <div id="icons" style="margin:5px;">
+                    <a href="https://www.facebook.com/BDE-CESI-Lille-2190916054532603/" style="color:white;margin-right:10px"><i class="fab fa-facebook-f pr-1 fa-2x"></i></a>
+                    <a href="https://www.instagram.com/bde_cesi_lille_/" style="color:white;margin-right:10px"><i class="fab fa-instagram fa-2x"></i></a>
+                    <a href="https://www.youtube.com/?gl=FR&amp;hl=fr" style="color:white;margin-right:10px"><i class="fab fa-youtube fa-2x"></i></a>
+                    <a href="https://twitter.com/home?lang=fr" style="color:white;margin-right:10px"><i class="fab fa-twitter fa-2x"></i></a>
+                </div>
+                <a href="{{ path("law") }}" style="color:black;margin:auto 0;margin-right:10px">Mentions légales</a>
+            </nav>
+        </footer>
+
+        {% block javascripts %}{% endblock %}
+
+        <script crossorigin="anonymous" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script crossorigin="anonymous" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script crossorigin="anonymous" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script src="/resources/js/footer.js"></script>
+    </body>
+
+</html>
